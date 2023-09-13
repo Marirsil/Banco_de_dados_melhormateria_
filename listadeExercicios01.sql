@@ -60,3 +60,8 @@ FROM autores
 LEFT JOIN livros ON autores.id = livros.autor_id;
 SELECT * FROM autores_livros;
 
+CREATE VIEW cursos_alunos AS
+SELECT alunos.nome, matriculas.curso
+FROM matriculas
+RIGHT JOIN alunos ON matriculas.aluno_id = alunos.id;
+SELECT * FROM cursos_alunos;
