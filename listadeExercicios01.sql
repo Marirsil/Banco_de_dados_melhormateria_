@@ -78,3 +78,12 @@ LEFT JOIN livros ON autores.id = livros.autor_id
 GROUP BY autores.nome
 ORDER BY total_de_livros DESC
 LIMIT 1;
+
+SELECT produto
+FROM (
+    SELECT produto, COUNT(*) AS quantidade_vendida
+    FROM vendas
+    GROUP BY produto
+) AS produtos_vendidos
+ORDER BY quantidade_vendida
+LIMIT 1;
