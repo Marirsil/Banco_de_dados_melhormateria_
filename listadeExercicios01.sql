@@ -87,3 +87,10 @@ FROM (
 ) AS produtos_vendidos
 ORDER BY quantidade_vendida
 LIMIT 1;
+
+CREATE VIEW autores_receita AS
+SELECT autores.nome, COUNT(livros.id) * 20 AS receita_total
+FROM autores
+LEFT JOIN livros ON autores.id = livros.autor_id
+GROUP BY autores.nome;
+SELECT * FROM autores_receita;
