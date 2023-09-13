@@ -26,3 +26,6 @@ FROM matriculas
 LEFT JOIN alunos ON matriculas.aluno_id = alunos.id
 GROUP BY matriculas.curso;
 
+SELECT produto, COUNT(*) AS quantidade_vendida
+FROM vendas
+GROUP BY produto;
