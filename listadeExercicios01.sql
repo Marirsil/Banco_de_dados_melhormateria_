@@ -99,3 +99,11 @@ SELECT alunos.nome, COUNT(matriculas.id) AS total_de_matriculas
 FROM alunos
 LEFT JOIN matriculas ON alunos.id = matriculas.aluno_id
 GROUP BY alunos.nome;
+
+CREATE VIEW produto_mais_vendido AS
+SELECT produto, COUNT(*) AS quantidade_vendida
+FROM vendas
+GROUP BY produto
+ORDER BY quantidade_vendida DESC
+LIMIT 1;
+SELECT * FROM produto_mais_vendido;
