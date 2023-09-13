@@ -65,3 +65,9 @@ SELECT alunos.nome, matriculas.curso
 FROM matriculas
 RIGHT JOIN alunos ON matriculas.aluno_id = alunos.id;
 SELECT * FROM cursos_alunos;
+
+CREATE VIEW alunos_cursos AS
+SELECT alunos.nome, matriculas.curso
+FROM alunos
+INNER JOIN matriculas ON alunos.id = matriculas.aluno_id;
+SELECT * FROM alunos_cursos;
