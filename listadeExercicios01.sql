@@ -29,3 +29,11 @@ GROUP BY matriculas.curso;
 SELECT produto, COUNT(*) AS quantidade_vendida
 FROM vendas
 GROUP BY produto;
+
+SELECT produto
+FROM (
+    SELECT produto, COUNT(*) AS quantidade_vendida
+    FROM vendas
+    GROUP BY produto
+) AS produtos_vendidos
+HAVING SUM(quantidade_vendida) > 10000;
