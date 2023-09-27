@@ -266,3 +266,17 @@ BEGIN
     LIMIT 1;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_LivrosPorCategoria(IN categoriaNome VARCHAR(100))
+BEGIN
+    -- Esta stored procedure lista todos os livros de uma categoria específica.
+    -- Parâmetros:
+    -- categoriaNome: O nome da categoria dos livros a serem listados.
+
+    SELECT Livro.Titulo
+    FROM Livro
+    INNER JOIN Categoria ON Livro.Categoria_ID = Categoria.Categoria_ID
+    WHERE Categoria.Nome = categoriaNome;
+END //
+DELIMITER ;
