@@ -256,3 +256,13 @@ BEGIN
     SELECT 'Livro adicionado com sucesso.' AS Mensagem;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_AutorMaisAntigo(OUT autorMaisAntigoNome VARCHAR(255))
+BEGIN
+    SELECT CONCAT(Nome, ' ', Sobrenome) INTO autorMaisAntigoNome
+    FROM Autor
+    ORDER BY Data_Nascimento ASC
+    LIMIT 1;
+END //
+DELIMITER ;
