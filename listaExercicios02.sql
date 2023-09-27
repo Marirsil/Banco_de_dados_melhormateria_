@@ -238,3 +238,21 @@ BEGIN
     WHERE Categoria.Nome = categoriaNome;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_AdicionarLivro(IN tituloLivro VARCHAR(255), IN editoraID INT, IN anoPublicacao INT, IN numeroPaginas INT, IN categoriaID INT)
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SELECT 'Erro ao adicionar o livro. Verifique os parâmetros.' AS Mensagem;
+    END;
+
+    START TRANSACTION;
+
+    INSERT INTO Livro (Titulo, Editora_ID, Ano_Publicacao, Numero_Paginas, Categoria_ID)
+    VALUES (tituloLivro, editoraID, anoPublicacao, numeroPaginas, categoriaID);
+    COMMIT;
+    SELECT 'Livro adicionado com sucesso.' AS Mensagem;
+END //
+DELIMITER ;
